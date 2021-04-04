@@ -1,0 +1,25 @@
+---
+title: "R Notebook"
+output: 
+  pdf_document:
+    keep_tex: yes
+---
+
+Sou o Floriano, Diretor de Expansão na VocêTubo e estamos com um projeto de uma nova plataforma de streaming. Precisamos de uma análise estatística do nosso banco de dados anexado, ele foi construído com base em dados do IMDb e de dados retirados de plataformas de streaming, em específico, o que desejamos saber como insumo para o nosso projeto de novo serviço é:
+A quantidade de lançamento ao longo dos anos;
+Se há alguma relação entre a duração dos filmes e o seu ano de lançamento;
+Se a nota do Rotten Tomatoes do filme é influenciada pelo tempo de duração dele;
+A distribuição de classificação indicativa do filme por plataforma;
+Uma comparação entre o IMDb das plataformas.
+
+
+```{r}
+plot(cars)
+```
+
+Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Cmd+Option+I*.
+
+When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Cmd+Shift+K* to preview the HTML file). 
+
+The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
+
