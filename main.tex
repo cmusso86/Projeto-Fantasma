@@ -1,0 +1,169 @@
+\documentclass[a4paper, 12pt]{article} %tipo de documento e opções gerais
+\usepackage[utf8]{inputenc} %codificação
+\usepackage[T1]{fontenc} %codificação
+\usepackage[portuguese]{babel}  %idioma
+\usepackage{amsmath,amssymb,amsfonts,amsthm} %padrões em formato matemático
+\usepackage[a4paper,top=3cm,bottom=2cm,left=3cm, right=2cm]{geometry} %margens
+\usepackage{indentfirst} %primeiro parágrafo com margem
+\usepackage{float} %fixar imagens e tabelas
+\usepackage{multicol} %várias colunas
+\usepackage{multirow} %várias linhas
+\usepackage{graphicx} %colocar imagens 
+\usepackage{anyfontsize} %qualquer tamanho de letra
+\usepackage{setspace} %espaçamento
+\usepackage[titles]{tocloft} %padrões de sumário
+\usepackage{fontspec} %outros tipos de fonte
+\usepackage{fancyhdr} %padronizar o formato do Header
+\usepackage[resetlabels,labeled]{multibib} %bibliografia
+\usepackage{newfloat} %alterar nome do quadro
+\usepackage{tabls} %pacote para espaçamento de linhas
+%\usepackage{titlesec}
+\usepackage{makecell}
+\usepackage{shadowtext}
+\usepackage{eso-pic,graphicx}
+\usepackage{tikz} %trabalhar com imagens e add background
+\usepackage[absolute,overlay]{textpos}
+\usepackage{calc} %para funçoes como \widthof
+\usepackage{hyperref}
+\usepackage{afterpage} % contracapa
+
+\newcommand\blankpage{% código para a contracapa
+    \null
+    \thispagestyle{empty}%
+    \addtocounter{page}{-1}%
+    \newpage}
+
+%definindo novo estilo de pagina
+\makeatletter
+\def\ps@Padrao{
+    %número da página com cor clara e no canto
+    \def\@oddfoot{\textcolor{white}{\null\hfill\thepage}}%
+    \def\@evenfoot{\thepage}%
+    %definindo cabeçado para o canto
+    \def\@evenhead{\null\hfil\slshape\leftmark }%
+    \def\@oddhead{{\slshape\rightmark\hfill \includegraphics[scale=0.2]{estat.png}}}} %cabeçalho
+\makeatother
+
+\pagestyle{Padrao}
+
+\setmainfont{Arial} %fonte arial
+\setstretch{1.5} %espaçamento
+\setlength\tablinesep{5pt} %espaço entre as células da tabela
+
+% ALTERANDO O TÍTULO DAS TABELAS E FIGURAS
+\addto\captionsenglish{%
+  \renewcommand\tablename{Tabela}
+  \renewcommand\figurename{Figura}
+}
+\DeclareFloatingEnvironment[listname=loq, listname={Lista de Quadros}]{quadro}
+
+% ALTERANDO O SUMÁRIO
+\makeatletter
+\renewcommand\tableofcontents{
+  \null\hfill\textbf{\Large\contentsname}\hfill\null\par
+  \@mkboth{\MakeUppercase\contentsname}{\MakeUppercase\contentsname}%
+  \@starttoc{toc}}
+\makeatother	
+\addto\captionsenglish{
+  \renewcommand{\contentsname}{Sumário}
+  }
+
+\clearpage
+
+\begin{document}
+\begin{titlepage}
+
+\center
+\tikz[remember picture,overlay] \node[opacity=1,inner sep=0pt] at (current page.center){\includegraphics[width=\paperwidth,height=\paperheight]{capa.png}};
+
+\begin{minipage}{16cm}
+\begin{flushright}
+% posições do título (substituir o segundo parâmetro do begin{textblock}
+% 1 linha:  (4cm, 8.38cm)   nao esquecer de cuidar
+% 2 linhas: (4cm, 7.75cm)   do tamanho das fontes
+% 3 linhas: (4cm, 7.15cm)   e o espaçamento delas
+% 4 linhas: (4cm, 6.55cm)
+% 5+ linhas: diminuir tamanho da fonte pra caber em 4
+
+\begin{textblock*}{16cm}(4cm, 8.38cm) %reposicione aqui
+
+    %\fontsize{tamanho}{espaçamento de linha}
+    {\fontsize{38}{22}\selectfont Título show \par}
+    %aplique \\ para saltar linhas pra rearranjar as palavras do título e ficarem melhor distribuídas
+    
+    %\par é para delimitar o parágrafo e poder aplicar efeitos de espaçamento entre linhas
+\end{textblock*}
+\end{flushright}
+\end{minipage}
+
+\vspace*{10cm}
+    %{\fontsize{38}{150}\selectfont Análise do consumo médio    anual de obras de pavimentação no Distrito\par}
+
+\begin{flushright}
+\begin{minipage}{6cm} 
+ \parbox[t]{8cm}{\textbf{Consultores Responsáveis:}\\ 
+Renan Menezes \\
+} \\ \\
+\parbox[t]{5cm}{\textbf{Requerente:}\\ 
+Projeto fantasma\\
+}
+\end{minipage}
+\end{flushright}
+\vspace{2cm}
+
+\includegraphics[scale=0.48]{estat.png}
+
+\vfill
+\end{titlepage}
+
+\tableofcontents
+\thispagestyle{empty}
+\newpage
+
+\section{Pode colocar as sections normalmente a partir de agora}
+\AddToShipoutPictureBG{\includegraphics[width=\paperwidth,height=\paperheight]{pagina-comum.png}}
+
+A partir daqui é tudo normal, as mudanças são detalhes apenas!
+
+A estrutura de relatório segue a mesma, as mudanças foram apenas a arte da capa e das páginas, a forma de apresentarmos alguns quadros (teste de hipóteses) e a forma que fazemos a conclusão.
+
+\section{A mudança mais critícia era a da Capa}
+
+Basta dar um crtl+c e um crtl+v em tudo entre a linha 1 e 122 (parte comentada "pacote + capa"), depois só mudar o título e as outras infos da capa como consultor e referente!
+
+Cuidado caso tenha adicionado um pacote diferente pra não esquecer de adicionar ele depois de copiar, e não se preocupe em entender tudo o que foi feita nessa capa, funções e argumentos, etc
+
+Não esqueça de baixar o capa.png, pagina-comum.png e o estat.png e upar no seu projeto fantasma do overleaf, é necessário pra mudar a capa e a arte das páginas restantes.
+
+\section{Mudanças nos quadros de testes de hipóteses}
+
+\begin{quadro}[H]
+\centering
+\caption{Nova forma de apresentar os resultados do teste, com apenas os p-valores}
+\label{R-Q-Teste-1}
+\vspace{0.1cm}
+\resizebox{\textwidth}{!}{
+\begin{tabular}{|c|c|c|c|c|}
+  \hline
+ \textbf{Variável} & \textbf{Teste de Normalidade} & \textbf{Decisão do Teste} & \textbf{Teste Exalta Samba} & \textbf{Decisão do Teste} \\ 
+  \hline 
+  Volume & (P-valor) & Não rejeita $H_0$ & (P-valor) & Rejeita $H_0$\\
+  \hline
+\end{tabular}}
+\end{quadro}
+
+Mudanças na forma de apresentar os resultados do teste, nos apresentamos somente as hipóteses do teste principal, o teste pra pressupostos apenas é comentado nos parágrafos (não apresentamos as hipóteses pra os pressupostos como fazemos com o teste normal).
+
+E aí, agora colocamos junto em um quadro a variável testada, os pressupostos testados ou o teste desejado, e a decisão com base no p-valor.
+
+Como caption, geralmente é colocado: "P-valores das hipóteses testadas sobre tantantantan"
+
+\section{Mudanças na forma de concluir}
+
+Antes a forma de concluir o relatório, era em tópicos, agora fazemos a conclusão em parágrafos mesmo. A ideia da conclusão é que ela apresente de forma sucinta e objetiva o objetivo do cliente com a consultoria - imaginamos que o cliente queira saber qual o impacto de um tratamento nas lesões dos pacientes, e a ideia seria fazer uma conclusão que apresenta exatamente seus objetivos: parágrafos explicando em quais tratamentos a intervenção foi eficaz ou se piorou a dor dos pacientes.
+
+Aqui vai um exemplo: 
+
+https://www.ime.usp.br/~jmsinger/MAE0217/RelatorioCEA08P27.pdf
+
+\end{document}
