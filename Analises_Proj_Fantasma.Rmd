@@ -6,6 +6,7 @@ output:
 ---
 
 Sou o Floriano, Diretor de Expansão na VocêTubo e estamos com um projeto de uma nova plataforma de streaming. Precisamos de uma análise estatística do nosso banco de dados anexado, ele foi construído com base em dados do IMDb e de dados retirados de plataformas de streaming, em específico, o que desejamos saber como insumo para o nosso projeto de novo serviço é:
+
 A quantidade de lançamento ao longo dos anos;
 Se há alguma relação entre a duração dos filmes e o seu ano de lançamento;
 Se a nota do Rotten Tomatoes do filme é influenciada pelo tempo de duração dele;
