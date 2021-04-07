@@ -88,7 +88,7 @@
 \begin{textblock*}{16cm}(4cm, 8.38cm) %reposicione aqui
 
     %\fontsize{tamanho}{espaçamento de linha}
-    {\fontsize{38}{22}\selectfont Projeto da Carol Musso \par}
+    {\fontsize{38}{22}\selectfont Avaliação de Filmes em Plataformas de Streaming \par}
     %aplique \\ para saltar linhas pra rearranjar as palavras do título e ficarem melhor distribuídas
     
     %\par é para delimitar o parágrafo e poder aplicar efeitos de espaçamento entre linhas
@@ -101,11 +101,11 @@
 
 \begin{flushright}
 \begin{minipage}{6cm} 
- \parbox[t]{8cm}{\textbf{Consultores Responsáveis:}\\ 
-Renan Menezes \\
+ \parbox[t]{8cm}{\textbf{Consultora Responsável:}\\ 
+Carolina Musso \\
 } \\ \\
 \parbox[t]{5cm}{\textbf{Requerente:}\\ 
-Projeto fantasma\\
+Floriano, Diretor de Expansão da VocêTudo\\
 }
 \end{minipage}
 \end{flushright}
@@ -120,22 +120,54 @@ Projeto fantasma\\
 \thispagestyle{empty}
 \newpage
 
-\section{Pode colocar as sections normalmente a partir de agora}
+\section{Introdução}
 \AddToShipoutPictureBG{\includegraphics[width=\paperwidth,height=\paperheight]{pagina-comum.png}}
 
-A partir daqui é tudo normal, as mudanças são detalhes apenas!
+O seguinte projeto tem o objetivo de avaliar atributos de filmes que estão disponíveis em plataformas de Streaming. Tais análises visam servir de insumo para tomadas de decisão da empresa VocêTubo, que está planejando oferecer como serviço uma nova Plataforma de streaming.  
 
-A estrutura de relatório segue a mesma, as mudanças foram apenas a arte da capa e das páginas, a forma de apresentarmos alguns quadros (teste de hipóteses) e a forma que fazemos a conclusão.
+Especificamente, pretende-se avaliar:\\
+- A quantidade de lançamentos ao longo dos anos;\\
+- Se há alguma relação entre a duração dos filmes e o seu ano de lançamento;\\
+- Se a nota do Rotten Tomatoes do filme é influenciada pelo tempo de duração dele;\\
+- A distribuição de classificação indicativa do filme por plataforma;
+Uma comparação entre o IMDb das plataformas.
 
-\section{A mudança mais critícia era a da Capa}
+Para tal, será realizado uma análise descritiva das variáveis pertinentes presentes no banco, bem como teste de hipótese para avaliar possíveis correlações entre variáveis contínuas, associações entre a variáveis categóricas, testes para comparação de médias entre grupos, e regressões com modelos lineares generalizados, de acordo com os objetivos.
 
-Basta dar um crtl+c e um crtl+v em tudo entre a linha 1 e 122 (parte comentada "pacote + capa"), depois só mudar o título e as outras infos da capa como consultor e referente!
+A Base de Dados utilizada foi oferecida pelo cliente e possui dados de 16744 filmes, para os quais se tem as seguintes informações: Título, Ano de Lençamento, Classificação Indicativa do FIlme, Notas no IMDb e Rotten Tomatoes, Quais plataformas estão disponíveis (Netflix, PrimeVideo, Hulu, Disney+, Nome do(s) Diretor(es), Gênero do Filme (Ação, Drama, Terror, etc), País, Língua e Tempo de duração em minutos. 
 
-Cuidado caso tenha adicionado um pacote diferente pra não esquecer de adicionar ele depois de copiar, e não se preocupe em entender tudo o que foi feita nessa capa, funções e argumentos, etc
+Para as análises foi utilizado o softwarer R versão 4.0.3 (10/10/2020) e os pacotes do tidyverse bem como os pacotes ggpubr, papeR, moments, 
+e wordcloud.
 
-Não esqueça de baixar o capa.png, pagina-comum.png e o estat.png e upar no seu projeto fantasma do overleaf, é necessário pra mudar a capa e a arte das páginas restantes.
+\section{Metodologia}
 
-\section{Mudanças nos quadros de testes de hipóteses}
+\subsection{Medidas}
+Foram utilizadas as seguintes medidas de posição e dispersão:\\
+\textbf{Média:}\\
+\textbf{Desvio Padrão}\\
+Quartis e Mediana:\\
+Min Max:\\
+Curtose:\\
+Assimetria:\\
+
+\subsection{Gráficos Utilizados}
+Boxplot:\\
+Gráfico de Dispersão:\\
+QQ-Plot:\\
+Curva de Densidade:\\
+Gráfico de Colunas ou Barras:\\
+Gráfico de Setores:\\
+
+\subsection{Teses de Hipótese}
+
+Chiquadrado:\\
+Kruskal-Wallis:\\
+Shapiro-Wilk:\\
+p-valor\\
+GLM:\\
+Nuvem de Palavras:\\
+
+\section{Análises}
 
 \begin{quadro}[H]
 \centering
@@ -158,7 +190,7 @@ E aí, agora colocamos junto em um quadro a variável testada, os pressupostos t
 
 Como caption, geralmente é colocado: "P-valores das hipóteses testadas sobre tantantantan"
 
-\section{Mudanças na forma de concluir}
+\section{Conclusões}
 
 Antes a forma de concluir o relatório, era em tópicos, agora fazemos a conclusão em parágrafos mesmo. A ideia da conclusão é que ela apresente de forma sucinta e objetiva o objetivo do cliente com a consultoria - imaginamos que o cliente queira saber qual o impacto de um tratamento nas lesões dos pacientes, e a ideia seria fazer uma conclusão que apresenta exatamente seus objetivos: parágrafos explicando em quais tratamentos a intervenção foi eficaz ou se piorou a dor hhahahahahaha.
 
