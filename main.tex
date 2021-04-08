@@ -560,7 +560,7 @@ Prime Video &  4950 & 29 & 5.63 & 1.39 & 1.0 & 4.7 & 5.8 & 6.7 & 9.1  \\
 \end{tabular}
 \end{table}
 
-Uma vez que o teste de Shapiro-Wilk indicou uma ditribuição diferente da normal e o teste de Bartlett indicaram não-homogeneidade das variâncias, foi escolhido um teste de postos de Kruskal-Wallis para comparar os grupos. O teste mostra uma diferença a nota entre as plataformas, sendo que a plataforma Prime Video foi a que apresentou, de nomo geral, as menores notas. O resultado do teste pode ser observado na tabela abaixo:
+Uma vez que o teste de Shapiro-Wilk indicou uma ditribuição diferente da normal e o teste de Bartlett indicaram não-homogeneidade das variâncias, foi escolhido um teste de postos de Kruskal-Wallis para comparar os grupos. O teste mostra uma diferença a nota entre as plataformas, sendo que a plataforma Prime Video foi a que apresentou, de nomo geral, as menores notas. Entretanto, é importsnte ter em mente que essa também foi a plataforms com maior número de filmes em streaming, o que amplia as chances de apresentar filmes piores em seu catálogo. O resultado do teste pode ser observado na tabela abaixo:
 
 
 \begin{quadro}[H]
@@ -627,6 +627,7 @@ na base de dados há filmes com até mais de 20 diretores. Avaliar aqueles filme
 Finalmente, é interessante analisar esse ranking para gêneros distintos de filmes. Alguns exemplos podem ser observados abaixo:\\
 
 \textbf{Drama}
+\newline
 
 \begin{enumerate}[topsep=0pt,partopsep=0pt]
     \item Mani Ratnam
@@ -636,8 +637,11 @@ Finalmente, é interessante analisar esse ranking para gêneros distintos de fil
     \item David Batty
 \end{enumerate}\\
 
+\pagebreak
 
 \textbf{Ação e Aventura}
+\newline
+
 \begin{enumerate}[topsep=0pt,partopsep=0pt]
     \item Christopher Nolan
     \item Quentin Tarantino
@@ -646,8 +650,9 @@ Finalmente, é interessante analisar esse ranking para gêneros distintos de fil
     \item Werner Herzog
 \end{enumerate}\\
 
-
 \textbf{Comédia}
+\newline
+
 \begin{enumerate}[topsep=0pt,partopsep=0pt]
     \item Rocco Urbisci
     \item Hrishikesh Mukherjee
@@ -655,9 +660,9 @@ Finalmente, é interessante analisar esse ranking para gêneros distintos de fil
     \item Steven J. Santos.
     \item Stan Lathan
 \end{enumerate}\\
-
-
 \textbf{Ficção Científica e Fantasia}
+\newline
+
 \begin{enumerate}[topsep=0pt,partopsep=0pt]
     \item Toshiyuki Kubooka
     \item Gore Verbinski
@@ -670,19 +675,22 @@ Levando em consideração todos os gêneros presentes no banco, os diretores que
 
 \begin{figure}[H]
     \centering
-    \caption{Distribuição da Classificação Indicativa por Plataforma}
-    \includegraphics[scale=0.25]{Nuvem.png}
+    \caption{Nuvem de Palavras por Diretor em Diferentes Gêneros}
+    \includegraphics[scale=1]{Nuvem.png}
     \label{fig:my_label}
 \end{figure}
+
+\pagebreak
 
 \section{Conclusões}
 \textbf{Ficção Científica e Fantasia}
 \begin{enumerate}[topsep=0pt,partopsep=0pt]
-    \item Toshiyuki Kubooka
-    \item Gore Verbinski
-    \item Robert Zemeckis
-    \item George Lucas
-    \item Steven Spielberg
+    \item Os lançamentos de filmes aumentaram com o passar dos anos, principalmente após os anos 2000.
+    \item A duraÇão do filme está fracamente, mas significativamente, relacionado de forma positiva com os anos. Ou seja, filmes mais recentes tendem a ser de maior duração. Também teve um aumento na proporção de Longa-metragens.  
+    \item Não ouve associação direta entre o tempo de duração do filne e a nota no Rotten Tomatoes, mas os Média-Metragens apresentaram notas significativamente maiores. 
+    \item A plataforma Disney+ foi a que apresentou maior proporção de filmes de classificação livre, enquanto a Prime Video apresentou maior proporção de filmes para maiores de 18 anos. 
+    \item A plataforma Prime Video foi a que apresnetou menor porntuação média de seus filmes no IMDb, enquanto a Disney+ apresentou a maior. 
+    \item Entre os diretores mais frequentemente presentes nos Top5, e mais conhecidos no ocidente estão Quentin Tarantino, Christopher Nolan, Martin Scorsese.
 \end{enumerate}
 
 
