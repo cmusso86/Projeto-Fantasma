@@ -185,7 +185,7 @@ Foram utilizadas as seguintes medidas de posição e dispersão para descrever a
 
 \subsection{Teses de Hipótese}
 
-\textbf{Teste de Shapiro-Wilk:} Utilizado para verificar se os dados estudados tem distribuição Normal. A normalidade dos dados é uma premissa importante para a realização de testes de hipótese do tipo paramétrico. Um p-valor <0.05 indica um desvio significativo de uma distribuição normal. Este teste foi utilizado para a avaliação da normalidade dos dados das variáveis contínuas de interesse.\\
+\textbf{Teste de Shapiro-Wilk:} Utilizado para verificar se os dados estudados tem distribuição Normal. A normalidade dos dados é uma premissa importante para a realização de testes de hipótese do tipo paramétrico. Um p-valor <0.05 indica um desvio significativo de uma distribuição normal. Este teste foi utilizado para a avaliação da normalidade dos dados das variáveis contínuas de interesse. Para o caso da análise da relação do tempo de duração com o ano de lançamento, não foi possível computar o valor desse teste, que tem um limite para um n=500, no R. \\
 
 \textbf{Teste de Bartlett:} Teste que também é utilizado para testar se os dados amostrais seguem as premissas para testes paramétricos. Este teste compara as variâncias entre grupos. Um p-valor <0.05 nesse teste indica que ao menos uma variância dos grupos se diferencia das outras. No caso desse trabalho, todos os testes de hipótese utilizados foram do tipo não-paramétrico.\\
 
@@ -199,7 +199,7 @@ Foram utilizadas as seguintes medidas de posição e dispersão para descrever a
 
 \textbf{Correlação de Spearman:} Para avaliar a força e significância da correlação entre duas variáveis que não possuem distribuição normal, pode-se utilizar o teste correlação de Spearman que fornece o coeficiente $\rho$ de Spearman. Valores próximos a 1 ou a -1 indicam correlações fortemente positivas ou fortemente negativas, respectivamente. Ou seja, se há uma relação proporcional ou inversamente proporcional, caso haja uma correlação significativa (p-valor<0.05). Esse teste e coeficiente foram utilizados para avaliar a correlação entre a variável Tempo de Duração do Filme e sua Nota no IMDb. \\
 
-\textbf{GLM:} Um modelo linear generalizado (GLM, do inglês General Linear Model) visa medir o quanto uma variável reposta observável pode ser explicada pela variação em outra variável, que é considerada uma variável explicativa. O modelo generalizado tem a vantagem sobre uma regressão linear usual por não necessitar de atender a premissa de normalidade dos dados. Nesse trabalho, foi utilizado um GLM para avaliar o tempo de duração de um filme em relação ao seu ano de lançamento. Como o tempo de duração não apresentava uma distribuição que indicasse proveniência de uma população normal, foi escolhido um modelo que tomava como base uma distribuição Gama, mais indicada no caso de distribuições assimétricas.\\
+\textbf{Regressão Linear:} Um modelo linear visa medir o quanto uma variável reposta observável pode ser explicada pela variação em outra variável, que é considerada uma variável explicativa. Nesse trabalho, foi utilizado regressão para avaliar o tempo de duração de um filme em relação ao seu ano de lançamento.\\
 
 \textbf{Nuvem de Palavras:} Também se escolheu fazer uso dessa  forma intuitiva e frequentemente utilizada utilizada atualmente. A nuvem de palavras mostra a frequência da palavra em determinado texto, indicando com fontes de tamanho maior aquelas palavras mais frequentes. Nesse trabalho foi utilizada para indicar quais diretores se encontravam mais frequentemente entre os Top 5 (pela no ta do IMDb) em diferentes gêneros de filme.  \\
 
@@ -209,39 +209,304 @@ Foram utilizadas as seguintes medidas de posição e dispersão para descrever a
 
 \subsection {A quantidade de lançamentos ao longo dos anos}\\
 
+O objetivo dessa análise é observar possíveis de tendências ao longo dos anos. 
+
 \begin{figure}[H]
     \centering
     \caption{Gráfico de Dispersão da Variável Número de Lançamentos com o decorrer dos anos}
-    \includegraphics[scale=0.1]{Fig_Lancamentos_Ano.png}
+    \includegraphics[scale=0.15]{Fig_Lancamentos_Ano.png}
     \label{fig:my_label}
 \end{figure}
 
+Na tabela abaixo é possível observar a quantidade de lançamentos por década. 
+
+\begin{table}[H]
+\caption{Frequência absoluta da variável Número de Lançamentos ao longo das década}
+\centering
+\begin{tabular}{l|r}
+\hline
+\multicolumn{1}{l|}{\textbf{Década}} &
+\multicolumn{1}{r}{\textbf{Número de Lançamentos}}\\
+\hline
+Início do Século & 1\\
+Anos 10 & 19\\
+Anos 20 & 46\\
+Anos 30 & 373\\
+Anos 40 & 372\\
+Anos 50 & 369\\
+Anos 60 & 386\\
+Anos 70 & 795\\
+Anos 80 & 747\\
+Anos 90 & 1104\\
+Anos 2000 & 3301\\
+Anos 2010 & 9231\\
+\hline
+\textbf{Total} & {16744}\\
+\hline
+\end{tabular}
+\end{table}
+
+Pode-se observar pelo gráfico e tabelas acima que o número de lançamento cresceu ao longo dos anos e que esse aumento foi mais acelerado a partir dos anos 2000.\\
+
+\subsection{Duração do filme e seu ano de lançamento}
+
+\subsubsection{Tempo como variável contínua}
+
+Essa análise permitiu avaliar se há alguma relação entre o tempo de duração do filme e o ano em que foi lançado. Como havia alguns filmes que apresentavam um tempo de duração muito discrepante em relação aos outros (\emph{outliers}) eles foram removidos dos dados utilizados nessa fase.\\
+
+No gráfico de dispersão abaixo é possível observar essa relação. 
+
+\begin{figure}[H]
+    \centering
+    \caption{Gráfico de Dispersão duração do filme com o decorrer dos anos}
+    \includegraphics[scale=0.15]{Fig_Duracao_Lancamento.png}
+    \label{fig:my_label}
+\end{figure}
+
+O gráfico pode parecer um pouco confuso, uma vez que apresenta muita sobreposição de pontos. No entanto, a linha adicionada ao gráfico corresponde à regressão linear para essas variáveis, onde podemos observar uma relação positiva. Os detalhes dessa regressão serão apresentados a seguir. O mesmo padrão pode ser observado na tabela abaixo.
+
+\begin{table}[H]
+\caption{Medidas Resumo do tempo de duração (min) dos filmes ao longo das décadas}
+\centering
+\begin{tabular}{l|rrrrrrrrrr}
+\hline
+\multicolumn{1}{l|}{\textbf{Década}} &
+\multicolumn{1}{r}{\textbf{N}} &
+\multicolumn{1}{r}{\textbf{Média}} &
+\multicolumn{1}{r}{\textbf{DP}}&
+\multicolumn{1}{r}{\textbf{Mínimo}}&
+\multicolumn{1}{r}{\textbf{Q1}}&
+\multicolumn{1}{r}{\textbf{Mediana}}&
+\multicolumn{1}{r}{\textbf{Q3}}&
+\multicolumn{1}{r}{\textbf{Máximo}}\\
+\hline
+Anos 10 & 11  & 82.09 & 14.84 & 60 & 74.5 & 76 & 90.5 & 112\\
+Anos 20 & 35  & 89.77 & 19.59 & 60 & 69.5 & 92 & 105.0 & 125\\
+Anos 30 & 349  & 72.53 & 15.54 & 50 & 61.0 & 68 & 82.0 & 136\\
+Anos 40 & 344  & 78.79 & 18.89 & 49 & 64.0 & 74 & 91.0 & 137\\
+Anos 50 & 337  & 84.65 & 16.02 & 50 & 73.0 & 83 & 93.0 & 135\\
+Anos 60 & 342 & 93.29 & 14.80 & 52 & 84.0 & 92 & 101.0 & 137\\
+Anos 70 & 725  & 94.54 & 13.93 & 50 & 87.0 & 93 & 102.0 & 136\\
+Anos 80 & 668  & 94.80 & 14.94 & 49 & 87.5 & 94 & 102.0 & 137\\
+Anos 90 & 948  & 94.82 & 15.88 & 49 & 88.0 & 95 & 103.0 & 136\\
+Anos 2000 & 2884  & 93.73 & 16.80 & 49 & 85.0 & 93 & 103.0 & 137\\
+Anos 2010 & 8039  & 93.12 & 16.96 & 49 & 84.0 & 92 & 103.0 & 137\\
+\hline
+\end{tabular}
+\end{table}
+
+Antes da realização da regressão linear, a normalidade dos dados (sem \emph{outliers}) foi verificada visualmente por meio dos gráficos de densidade, QQplot, a curtose e assimetria abaixo. Os. parâmetros foram considerados razoavelmente satisfatórios para a realização de uma regressão linear. 
+
+Os gráficos abaixo mostram uma distribuição razoavelmente simétrica (Assimetria de 0.007, indicando uma leve assimetria à direita) e uma distribuição leptocúrtica (Curtose = 3.2, mais fina e comprida em relação à normal). Vemos que a maioria dos filmes tem duração ~90 min, mas que há pequenos picos de filmes com ~60 min e ~120 min.
+
+\begin{figure}[H]
+    \centering
+    \caption{Gráfico de Dispersão duração do filme com o decorrer dos anos}
+    \includegraphics[scale=0.15]{Fig_Duracao_Densidade.png}
+    \label{fig:my_label}
+\end{figure}
+
+O gráfico abaixo mostra que a distribuição apresenta algum desvio em relação a distribuição normal, entretanto, principalmente para valores intermediários, ela apresenta uma distribuição bem próxima à normalidade. 
+
+\begin{figure}[H]
+    \centering
+    \caption{Gráfico de Dispersão duração do filme com o decorrer dos anos}
+    \includegraphics[scale=0.15]{Fig_Duracao_QQ.png}
+    \label{fig:my_label}
+\end{figure}
+
+Tendo em vista as informações acima, a distribuição foi considerada suficientemente próxima à normal para a realização de uma regressão linear, apesar das diferenças mencionadas. A regressão linear é um método robusto, e esses desvios não foram considerados suficientes para impedir a sua utilização. O resultado do teste de regressão pode ser observado no quadro abaixo:
 
 
 \begin{quadro}[H]
 \centering
-\caption{Nova forma de apresentar os resultados do teste, com apenas os p-valores}
+\caption{Regressão Linear do tempo de duração em relação ao ano de lançamento}
 \label{R-Q-Teste-1}
 \vspace{0.1cm}
 \resizebox{\textwidth}{!}{
 \begin{tabular}{|c|c|c|c|c|}
   \hline
- \textbf{Variável} & \textbf{Teste de Normalidade} & \textbf{Decisão do Teste} & \textbf{Teste Exalta Samba} & \textbf{Decisão do Teste} \\ 
+ \textbf{Modelo} & \textbf{Coeficiente}  & \textbf{$R^2$} & \textbf{P-valor} & \textbf{Decisão do Teste} \\ 
   \hline 
-  Volume & (P-valor) & Não rejeita $H_0$ & (P-valor) & Rejeita $H_0$\\
+  Duração = r*Ano+b & 0.14  & 0.03 & <0.0001 & Rejeita $H_0$\\
   \hline
 \end{tabular}}
 \end{quadro}
 
-Mudanças na forma de apresentar os resultados do teste, nos apresentamos somente as hipóteses do teste principal, o teste pra pressupostos apenas é comentado nos parágrafos (não apresentamos as hipóteses pra os pressupostos como fazemos com o teste normal).
+Observando as informações acima, notamos que a variável ano de lançamento e duração do filme tem uma relação positiva significativa. Entretanto, essa relação é fraca, como pode ser observado pelo coeficiente de regressão r e pelo $ R^2$. Ou sejam os filmes aumentaram, em média, em duração ao longo dos anos, mas esse aumento médio não foi acentuado. 
 
-E aí, agora colocamos junto em um quadro a variável testada, os pressupostos testados ou o teste desejado, e a decisão com base no p-valor.
+\subsubsection{Tempo como variável categórica}
 
-Como caption, geralmente é colocado: "P-valores das hipóteses testadas sobre tantantantan"
+Para explorar mais afundo essa relação do tempo de duração do filme e o ano de duração, o tempo de duração foi categorizado como descrito na seção de Metodologia. Os gráficos de setores abaixo mostram claramente um aumento na proporção de Longa-Metragem ao longo das décadas. 
 
+
+\begin{figure}[H]
+    \centering
+    \caption{Gráfico de Dispersão duração do filme com o decorrer dos anos}
+    \includegraphics[scale=0.25]{Fig_Setores_Decada_Duracao.png}
+    \label{fig:my_label}
+\end{figure}
 \section{Conclusões}
 
-Antes a forma de concluir o relatório, era em tópicos, agora fazemos a conclusão em parágrafos mesmo. A ideia da conclusão é que ela apresente de forma sucinta e objetiva o objetivo do cliente com a consultoria - imaginamos que o cliente queira saber qual o impacto de um tratamento nas lesões dos pacientes, e a ideia seria fazer uma conclusão que apresenta exatamente seus objetivos: parágrafos explicando em quais tratamentos a intervenção foi eficaz ou se piorou a dor hhahahahahaha.
+Nas primeiras décadas do século XX (Descontando o primeiro gráfico que indica a produção de um único Curta-Metragem na primeira década), cerca de 25\% das produções se tratavam de Curta-Metragens e 70\% de Longas. Ao início do Século XXI essas proporções eram, respectivamente de 2\% 3 90\%. Essa diferença foi significativa, como está indicado no resultado do teste de $\chi^2$ abaixo:
+
+\begin{quadro}[H]
+\centering
+\caption{Teste de Associação $chi^2$ entre as variáveis Metragem e Década }
+\label{R-Q-Teste-1}
+\vspace{0.1cm}
+\resizebox{\textwidth}{!}{
+\begin{tabular}{|c|c|c|c|c|}
+  \hline
+ \textbf{Associação} & \textbf{$chi^2$}  & \textbf{GL} & \textbf{P-valor} & \textbf{Decisão do Teste} \\ 
+  \hline 
+  Década x Metragem & 359.16  & 22 & <0.0001 & Rejeita $H_0$\\
+  \hline
+\end{tabular}}
+\end{quadro}
+
+\subsection{Nota do Rotten Tomatoes e o tempo de duração}
+
+\subsubsection{Tempo como variável Contínua}
+
+Neste caso, foi analisado a relação nota  do Rotten Tomatoes para cada tempo de duração. 
+ 
+\begin{figure}[H]
+    \centering
+    \caption{Gráfico de Dispersão duração do filme com o decorrer dos anos}
+    \includegraphics[scale=0.15]{Fig_Rotten_Duracao.png}
+    \label{fig:my_label}
+\end{figure}
+
+A nota do Rotten Tomatoes não apresenta distribuição normal, como pode ser observada nas figuras e informações abaixo.
+
+\begin{figure}[H]
+    \centering
+    \caption{Curva de densidade da nota no Rotten Tomatoes }
+    \includegraphics[scale=0.15]{Fig_Rotten_Densidade.png}
+    \label{fig:my_label}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \caption{QQ-Plot da nota do Rotten Tomatoes}
+    \includegraphics[scale=0.15]{Fig_Rotten_QQ.png}
+    \label{fig:my_label}
+\end{figure}
+
+Como pode ser observado, a dispersão é notavelmente assimétrica à esquerda (Assimetria -0.5) e Platicúrtica (achatada). Ademais, o QQ-plot mostra um desvio significato da normal principalmente para os valores em seus extremos. 
+
+Por isso, foi escolhido a o teste Spearman para analisar a correlação entre essas variáveis.
+ 
+\begin{quadro}[H]
+\centering
+\caption{Teste de Correlação entre as variáveis Tempo de Duração a Avaliação no Rotten Tomatoes }
+\label{R-Q-Teste-1}
+\vspace{0.1cm}
+\resizebox{\textwidth}{!}{
+\begin{tabular}{|c|c|c|c|c|}
+  \hline
+ \textbf{Correlação}  & \textbf{$\rho$} & \textbf{P-valor} & \textbf{Decisão do Teste} \\ 
+  \hline 
+  Duração x Rotten   & -0.03 & <0.117 & Aceita $H_0$\\
+  \hline
+\end{tabular}}
+\end{quadro}
+
+Como pôde se observado, não uma correlação significativa entre essas variáveis. 
+
+\subsubsection{ Duração como variável Categórica}
+
+Por outro lado, observando realizando a comparação entre as notas paras os grupos de Curte, Média e Longa-metragens, tonamos que os Média-metragens apresentam média de nota no Rotten Tomatoes significativamente maiores.
+
+\begin{figure}[H]
+    \centering
+    \caption{Box plot nota do Rotten Tomatoes por Metragem do filme}
+    \includegraphics[scale=0.15]{Fig_Rottem_Metragem.png}
+    \label{fig:my_label}
+\end{figure}
+
+\begin{table}[H]
+\caption{Medidas Resumo do tempo de duração dos filmes por categoria de metragem}
+\centering
+\begin{tabular}{l|rrrrrrrrrr}
+\hline
+\multicolumn{1}{l|}{\textbf{Metragem}} &
+\multicolumn{1}{r}{\textbf{N}} &
+\multicolumn{1}{r}{\textbf{Média}} &
+\multicolumn{1}{r}{\textbf{DP}}&
+\multicolumn{1}{r}{\textbf{Mínimo}}&
+\multicolumn{1}{r}{\textbf{Q1}}&
+\multicolumn{1}{r}{\textbf{Mediana}}&
+\multicolumn{1}{r}{\textbf{Q3}}&
+\multicolumn{1}{r}{\textbf{Máximo}}\\
+\hline
+
+Curta & 22 & 66.14 & 30.11 &  11 & 49.0 & 75 & 91.0 & 100 \\
+Média & 112   & 75.39 & 24.12 &  14 & 59.0 & 80 & 96.5 & 100 \\
+Longa &  4988  & 65.16 & 26.65 &  2 & 43.5 & 71 & 88.0 & 100  \\
+\hline
+\end{tabular}
+\end{table}
+
+Uma vez que os dados não apresentam distribuição normal, como mostrado anteriormente, a comparação foi feita pelo teste de Kruskal-Wallis seguido do teste de Dunn.
+
+
+\begin{quadro}[H]
+\centering
+\caption{Teste de Kruskal-Wallis comparando as notas do Rotten Tomatoes por tipo de Metragem }
+\label{R-Q-Teste-1}
+\vspace{0.1cm}
+\resizebox{\textwidth}{!}{
+\begin{tabular}{|c|c|c|c|c|}
+  \hline
+ \textbf{Variável}  & \textbf{$\chi^2$} & \textbf{GL}& \textbf{P-valor} & \textbf{Decisão do Teste} \\ 
+  \hline 
+  Nota Rotten Tomatoes   & 18.675 & 2 & <0.0001 & Rejeita $H_0$\\
+  \hline
+\end{tabular}}
+\end{quadro}
+
+O teste de Dunn mostrou que as notas dos filmes de Média-Metragem são significativamente maiores que os de Longa metragem (p<0.0001).
+
+\subsection{Classificação indicativa do filme por plataforma}
+
+A distribuição de diferentes tipos de classificação indicativa do filme pode ser observada no gráfico abaixo.
+
+\begin{figure}[H]
+    \centering
+    \caption{QQ-Plot da nota do Rotten Tomatoes}
+    \includegraphics[scale=0.15]{Fig_Rotten_QQ.png}
+    \label{fig:my_label}
+\end{figure}
+
+
+\begin{table}[H]
+\caption{Medidas Resumo do tempo de duração dos filmes por categoria de metragem}
+\centering
+\begin{tabular}{lllrllrllrllrlll}
+\hline
+\multicolumn{1}{l|}{\textbf{Classificação}} &
+\multicolumn{1}{r}{\textbf{Disney+ (N)}} &
+\multicolumn{1}{r}{\textbf{\%}} &
+\multicolumn{1}{r}{\textbf{Hulu (N)}}&
+\multicolumn{1}{r}{\textbf{\%}}&
+\multicolumn{1}{r}{\textbf{Netflix (N)}}&
+\multicolumn{1}{r}{\textbf{\%}}&
+\multicolumn{1}{r}{\textbf{Prime Video (N)}}&
+\multicolumn{1}{r}{\textbf{\%}}\\
+\hline
+
+ 7+ & 179 & 35.8 & 109 & 18.5 & 323 & 19.3 & 916 & 18.4 \\
+ 13+ &  40 & 8.0 & 119 & 20.2 & 383 & 22.8 & 819 & 16.4 \\
+ 16+ & 1 & 0.2 & 17 & 2.9 & 89 & 5.3 & 226 & 4.5  \\
+ 18+ & 3 & 0.6 & 290 & 49.2 & 752 & 44.8 & 2612 & 52.5   \\
+Todas &  277 & 55.4 &  55 & 9.3 &  130 & 7.8 &  406 & 8.2  \\
+\hline
+\end{tabular}
+\end{table}
+
+\section{Conclusões}
 
 Aqui vai um exemplo: 
 
