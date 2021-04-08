@@ -26,6 +26,8 @@
 \usepackage{calc} %para funçoes como \widthof
 \usepackage{hyperref}
 \usepackage{afterpage} % contracapa
+\usepackage{paralist}
+\usepackage{enumitem}
 
 \newcommand\blankpage{% código para a contracapa
     \null
@@ -352,13 +354,13 @@ Nas primeiras décadas do século XX (Descontando o primeiro gráfico que indica
 
 \begin{quadro}[H]
 \centering
-\caption{Teste de Associação $chi^2$ entre as variáveis Metragem e Década }
+\caption{Teste de Associação $\chi^2$ entre as variáveis Metragem e Década }
 \label{R-Q-Teste-1}
 \vspace{0.1cm}
 \resizebox{\textwidth}{!}{
 \begin{tabular}{|c|c|c|c|c|}
   \hline
- \textbf{Associação} & \textbf{$chi^2$}  & \textbf{GL} & \textbf{P-valor} & \textbf{Decisão do Teste} \\ 
+ \textbf{Associação} & \textbf{$\chi^2$}  & \textbf{GL} & \textbf{P-valor} & \textbf{Decisão do Teste} \\ 
   \hline 
   Década x Metragem & 359.16  & 22 & <0.0001 & Rejeita $H_0$\\
   \hline
@@ -475,8 +477,8 @@ A distribuição de diferentes tipos de classificação indicativa do filme pode
 
 \begin{figure}[H]
     \centering
-    \caption{QQ-Plot da nota do Rotten Tomatoes}
-    \includegraphics[scale=0.15]{Fig_Rotten_QQ.png}
+    \caption{Distribuição da Classificação Indicativa por Plataforma}
+    \includegraphics[scale=0.25]{Fig_Classificacao_Plataforma.png}
     \label{fig:my_label}
 \end{figure}
 
@@ -484,16 +486,16 @@ A distribuição de diferentes tipos de classificação indicativa do filme pode
 \begin{table}[H]
 \caption{Medidas Resumo do tempo de duração dos filmes por categoria de metragem}
 \centering
-\begin{tabular}{lllrllrllrllrlll}
+\begin{tabular}{l|rrrrrrrr}
 \hline
 \multicolumn{1}{l|}{\textbf{Classificação}} &
-\multicolumn{1}{r}{\textbf{Disney+ (N)}} &
+\multicolumn{1}{r}{\textbf{Disney+}} &
 \multicolumn{1}{r}{\textbf{\%}} &
-\multicolumn{1}{r}{\textbf{Hulu (N)}}&
+\multicolumn{1}{r}{\textbf{Hulu}}&
 \multicolumn{1}{r}{\textbf{\%}}&
-\multicolumn{1}{r}{\textbf{Netflix (N)}}&
+\multicolumn{1}{r}{\textbf{Netflix}}&
 \multicolumn{1}{r}{\textbf{\%}}&
-\multicolumn{1}{r}{\textbf{Prime Video (N)}}&
+\multicolumn{1}{r}{\textbf{Prime Video}}&
 \multicolumn{1}{r}{\textbf{\%}}\\
 \hline
 
@@ -506,10 +508,182 @@ Todas &  277 & 55.4 &  55 & 9.3 &  130 & 7.8 &  406 & 8.2  \\
 \end{tabular}
 \end{table}
 
+Para a realização de um teste de $\chi^2$ mais fácil de interpretar, a variável Classificação Indicativa foi transformada em uma variável Dicotômica (Menores ou maiores de 18 anos). Observavamos uma associação significativa entre a Plataforma e a Classificação, que se diferencia principalmente por uma maior proporção de filmes de Classificação indicativa livre na plataforma Disney+ e em contra partida uma proporção maior de files para maiores de 18 anos na plataforma Prime Video.
+
+\begin{quadro}[H]
+\centering
+\caption{Teste $\chi^2$ entre classificação e plafatorma }
+\label{R-Q-Teste-1}
+\vspace{0.1cm}
+\resizebox{\textwidth}{!}{
+\begin{tabular}{|c|c|c|c|c|}
+  \hline
+ \textbf{Associação}  & \textbf{$\chi^2$} & \textbf{GL}& \textbf{P-valor} & \textbf{Decisão do Teste} \\ 
+  \hline 
+  Classificação x Plataforma   & 495.59 & 3 & <0.0001 & Rejeita $H_0$\\
+  \hline
+\end{tabular}}
+\end{quadro}
+
+
+\subsection {Uma comparação nota IMDb entre plataformas}
+Uma comparação das notas do IMDb entre as plataformas pode ser observada no gráfico e tabela abaixo:
+
+\begin{figure}[H]
+    \centering
+    \caption{Distribuição da Classificação Indicativa por Plataforma}
+    \includegraphics[scale=0.25]{Fig_IMDb_Plataforma.png}
+    \label{fig:my_label}
+\end{figure}
+
+\begin{table}[H]
+\caption{Medidas Resumo do tempo nota do IMDb por Plataforma}
+\centering
+\begin{tabular}{l|rrrrrrrrrr}
+\hline
+\multicolumn{1}{l|}{\textbf{Plataforma}} &
+\multicolumn{1}{r}{\textbf{N}} &
+\multicolumn{1}{r}{\textbf{Média}} &
+\multicolumn{1}{r}{\textbf{DP}}&
+\multicolumn{1}{r}{\textbf{Mínimo}}&
+\multicolumn{1}{r}{\textbf{Q1}}&
+\multicolumn{1}{r}{\textbf{Mediana}}&
+\multicolumn{1}{r}{\textbf{Q3}}&
+\multicolumn{1}{r}{\textbf{Máximo}}\\
+\hline
+
+Disney+ &  500 & 0 &  6.41 & 1.05 &  1.6 & 5.8 & 6.5 & 7.2 & 8.7 \\
+Hulu & 585 & 5 &  6.20 & 1.11 & 2.2 & 5.5 & 6.2 & 7.1 & 9.0  \\
+Netflix &  1673 & 4 &  6.29 & 1.10 &  2.1 & 5.6 & 6.3 & 7.1 & 8.8  \\
+Prime Video &  4950 & 29 & 5.63 & 1.39 & 1.0 & 4.7 & 5.8 & 6.7 & 9.1  \\
+\hline
+\end{tabular}
+\end{table}
+
+Uma vez que o teste de Shapiro-Wilk indicou uma ditribuição diferente da normal e o teste de Bartlett indicaram não-homogeneidade das variâncias, foi escolhido um teste de postos de Kruskal-Wallis para comparar os grupos. O teste mostra uma diferença a nota entre as plataformas, sendo que a plataforma Prime Video foi a que apresentou, de nomo geral, as menores notas. O resultado do teste pode ser observado na tabela abaixo:
+
+
+\begin{quadro}[H]
+\centering
+\caption{Teste Krukal-Wallis da nota IMDb entre plafatorma }
+\label{R-Q-Teste-1}
+\vspace{0.1cm}
+\resizebox{\textwidth}{!}{
+\begin{tabular}{|c|c|c|c|c|}
+  \hline
+ \textbf{Variável}  & \textbf{$\chi^2$} & \textbf{GL}& \textbf{P-valor} & \textbf{Decisão do Teste} \\ 
+  \hline 
+  Nota IMDb   & 409.2017 & 3 & <0.0001 & Rejeita $H_0$\\
+  \hline
+\end{tabular}}
+\end{quadro}
+
+O teste de Dunn indica que todos grupos são diferentes entre si, exceto Hulu x Netflix.
+
+\subsection {Top 5 diretoes de acordo com a nota IMDb}
+
+Esta questão pode ser avaliada de diversas formas:
+
+\subsubsection{Quais eram os diretores dos filmes com as cinco maiores notas no IMDb?}
+
+A Classificação para um filme individual se deu como se segue:\\
+
+\begin{enumerate}[topsep=0pt,partopsep=0pt]
+\item Fen Tian, com nota 9.3 pelo filme \emph{ Love on a Leash}
+\item Danny Wu , com nota 9.3  pelo filme \emph{Square One}  
+\itemTom McLoughlin, com nota  9.3 pelo filme \emph{Steven Banks: Home Entertainment Center}
+\item Miguel Gaudêncio, com nota  9.3 pelo filme \emph{Down, But Not Out!}            
+\item Roger Donaldson,com nota  9.3 pelo filme \emph{Bounty}      
+\end{enumerate}
+
+\subsubsection{Qual as cinco melhores notas médias dos diretore?}
+
+Para essa análise foram considerados apenas os diretores com pelo menos três filmes:
+
+\begin{enumerate}[topsep=0pt,partopsep=0pt]
+    \item Rocco Urbisci
+    \item Nick Nanton
+    \item Bruce Gowers
+    \item Christopher Nolan
+    \item Kerry Shawcross
+\end{enumerate}
+
+
+
+\subsubsection{Qual as cinco melhores notas médias dos filmes com apenas um diretor?}
+
+na base de dados há filmes com até mais de 20 diretores. Avaliar aqueles filmes que tiveram apenas um diretor pode ser mais informativo a respeito mo mérito indivídual. Nesse caso a lista dos Top 5 é composta por:\\
+
+\begin{enumerate}[topsep=0pt,partopsep=0pt]
+    \item Rocco Urbisci
+    \item Christopher Nolan
+    \item Louis C.K.
+    \item Rajkumar Hirani
+    \item Steven J. Santos
+\end{enumerate}
+
+\subsubsection{Qual as cinco melhores notas médias dos filmes com apenas um diretor, para cada gênero de filmes?}
+
+Finalmente, é interessante analisar esse ranking para gêneros distintos de filmes. Alguns exemplos podem ser observados abaixo:\\
+
+\textbf{Drama}
+
+\begin{enumerate}[topsep=0pt,partopsep=0pt]
+    \item Mani Ratnam
+    \item Martin Scorsese
+    \item Rajkumar Hirani
+    \item Hrishikesh Mukherjee
+    \item David Batty
+\end{enumerate}\\
+
+
+\textbf{Ação e Aventura}
+\begin{enumerate}[topsep=0pt,partopsep=0pt]
+    \item Christopher Nolan
+    \item Quentin Tarantino
+    \item S.S. Rajamoul
+    \item Toshiyuki Kubooka
+    \item Werner Herzog
+\end{enumerate}\\
+
+
+\textbf{Comédia}
+\begin{enumerate}[topsep=0pt,partopsep=0pt]
+    \item Rocco Urbisci
+    \item Hrishikesh Mukherjee
+    \item Louis C. K.
+    \item Steven J. Santos.
+    \item Stan Lathan
+\end{enumerate}\\
+
+
+\textbf{Ficção Científica e Fantasia}
+\begin{enumerate}[topsep=0pt,partopsep=0pt]
+    \item Toshiyuki Kubooka
+    \item Gore Verbinski
+    \item Robert Zemeckis
+    \item George Lucas
+    \item Steven Spielberg
+\end{enumerate}\\
+
+Levando em consideração todos os gêneros presentes no banco, os diretores que mais frequentemente apareceram na lista dos Top 5 pela nota do IMDb podem ser visualizados na nuvem de palavras abaixo:\\
+
+\begin{figure}[H]
+    \centering
+    \caption{Distribuição da Classificação Indicativa por Plataforma}
+    \includegraphics[scale=0.25]{Nuvem.png}
+    \label{fig:my_label}
+\end{figure}
+
 \section{Conclusões}
+\textbf{Ficção Científica e Fantasia}
+\begin{enumerate}[topsep=0pt,partopsep=0pt]
+    \item Toshiyuki Kubooka
+    \item Gore Verbinski
+    \item Robert Zemeckis
+    \item George Lucas
+    \item Steven Spielberg
+\end{enumerate}
 
-Aqui vai um exemplo: 
-
-https://www.ime.usp.br/~jmsinger/MAE0217/RelatorioCEA08P27.pdf
 
 \end{document}
