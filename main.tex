@@ -88,7 +88,7 @@
 \begin{textblock*}{16cm}(4cm, 8.38cm) %reposicione aqui
 
     %\fontsize{tamanho}{espaçamento de linha}
-    {\fontsize{38}{22}\selectfont Projeto da Carol Musso \par}
+    {\fontsize{38}{22}\selectfont Avaliação de Filmes em Plataformas de Streaming \par}
     %aplique \\ para saltar linhas pra rearranjar as palavras do título e ficarem melhor distribuídas
     
     %\par é para delimitar o parágrafo e poder aplicar efeitos de espaçamento entre linhas
@@ -101,11 +101,11 @@
 
 \begin{flushright}
 \begin{minipage}{6cm} 
- \parbox[t]{8cm}{\textbf{Consultores Responsáveis:}\\ 
-Renan Menezes \\
+ \parbox[t]{8cm}{\textbf{Consultora Responsável:}\\ 
+Carolina Musso \\
 } \\ \\
 \parbox[t]{5cm}{\textbf{Requerente:}\\ 
-Projeto fantasma\\
+Floriano, Diretor da VocêTudo\\
 }
 \end{minipage}
 \end{flushright}
@@ -120,22 +120,93 @@ Projeto fantasma\\
 \thispagestyle{empty}
 \newpage
 
-\section{Pode colocar as sections normalmente a partir de agora}
+\section{Introdução}
 \AddToShipoutPictureBG{\includegraphics[width=\paperwidth,height=\paperheight]{pagina-comum.png}}
 
-A partir daqui é tudo normal, as mudanças são detalhes apenas!
+O seguinte projeto tem o objetivo de avaliar atributos de filmes que estão disponíveis em Plataformas de \emph{Streaming}. Tais análises visam servir de insumo para tomadas de decisão da empresa VocêTubo, que está planejando oferecer como serviço uma nova Plataforma de \emph{streaming} própria.  
 
-A estrutura de relatório segue a mesma, as mudanças foram apenas a arte da capa e das páginas, a forma de apresentarmos alguns quadros (teste de hipóteses) e a forma que fazemos a conclusão.
+Especificamente, pretendeu-se avaliar:\\
+1) A quantidade de lançamentos ao longo dos anos;\\
+2) Se há alguma relação entre a duração dos filmes e o seu ano de lançamento;\\
+3) Se a nota do \emph{Rotten Tomatoes} do filme é influenciada pelo tempo de duração dele;\\
+4) A distribuição de classificação indicativa do filme por plataforma;
+Uma comparação entre o IMDb das plataformas.\\
+5) Top 5 Diretores de Acordo com a nota do IMDb.\\
 
-\section{A mudança mais critícia era a da Capa}
+Para tal, foi realizada uma análise descritiva das variáveis pertinentes presentes no banco, bem como teste de hipótese para avaliar possíveis correlações entre variáveis contínuas, associações entre a variáveis categóricas, testes para comparação de médias ou de distribuições entre grupos e regressões com modelos lineares generalizados.\\
 
-Basta dar um crtl+c e um crtl+v em tudo entre a linha 1 e 122 (parte comentada "pacote + capa"), depois só mudar o título e as outras infos da capa como consultor e referente!
+A Base de Dados utilizada foi oferecida pelo cliente e possui dados de 16744 filmes, para os quais se tem as seguintes informações: Título, Ano de Lançamento, Classificação Indicativa do Filme, Notas no IMDb e do \emph{Rotten Tomatoes}, Quais plataformas estão disponíveis (Netflix, PrimeVideo, Hulu, Disney+, Nome do(s) Diretor(es), Gênero do Filme (Ação, Drama, Terror, etc), País, Língua e Tempo de duração em minutos. Para melhor explorar os dados dessa base e lançar novos \emph{insights} sobre o que esses dados podem mostrar, foram criadas novas variáveis.\\
 
-Cuidado caso tenha adicionado um pacote diferente pra não esquecer de adicionar ele depois de copiar, e não se preocupe em entender tudo o que foi feita nessa capa, funções e argumentos, etc
+Para melhor explorar a questão (2) exposta acima, foi criada a variável "Década", que agrupa os anos de lançamento do filme, e também  a variável "Metragem", que distribuiu os filmes quanto sua duração em três categorias: Curta-Metragem (duração até 30min), Média-Metragem (Duração até 60min) e Longa-Metragem (duração acima de 60min). Para  melhor explorar a questão (4), exposta acima, a variável "Classificação Indicativa" do filme foi categorizada de forma dicotômica em filmes para Maiores ou para Menores de 18 anos. Para a análise da questão (5) acima, foi criada uma variável que informa a quantidade de diretores de um filme.\\
 
-Não esqueça de baixar o capa.png, pagina-comum.png e o estat.png e upar no seu projeto fantasma do overleaf, é necessário pra mudar a capa e a arte das páginas restantes.
+Para as análises foi utilizado o \emph{softwarer} R versão 4.0.3 (10/10/2020) e os pacotes do tidyverse bem como os pacotes ggpubr, papeR, moments, 
+e wordcloud. Todos os testes de hipótese utilizados consideraram um nível de significânia $\alpha$=0.05
 
-\section{Mudanças nos quadros de testes de hipóteses}
+\section{Metodologia}
+
+\subsection{Medidas e Conceitos Importantes}
+Foram utilizadas as seguintes medidas de posição e dispersão para descrever a distribuição de frequências dos dados:\\
+
+\textbf{Média:} É uma medida de tendência central que indica o "centro de gravidade" dos dados, ou o seu valor esperado.\\
+
+\textbf{Desvio Padrão:} É uma medida da dispersão, ou da variabilidade dos dados. Indica quanto, em média, os valores da amostra se distanciam do valor médio.\\
+
+\textbf{Quartis e Mediana:} Os quartis (um tipo específico de Quantil, que divide os dados em quatro partes iguais) indicam quantos porcentos dos dados estão acumulados abaixo daquele ponto. O primeiro Quartil (Q1) marca o valor sob o qual se encontram 25\% dos dados. O segundo Quartil Q2, também chamado de mediana, indica até onde se encontram 50\% dos valores da amostra. Finalmente, o Q3 marca a posição de 75\% dos dados.\\
+
+\textbf{Min Max:} Os valores Mínimo e Máximo são auto-explicativos e representam o range total que os dados da amostra percorrem.\\
+
+\textbf{Normalidade dos dados:} É uma premissa para diversos testes de hipótese que os dados sejam provenientes de uma população com distribuição normal. Uma distribuição normal, também denominada Paramétrica, é uma distribuição de frequências caracterizada por uma curva em forma de sino, simétrica em relação ao seu valor médio, e dentre outros aspectos importantes, apresenta baixa frequência de valores extremos. Para a verificação dessa premissa, foram utilizados gráfico de densidade, gráfico qq-plot e o teste de Shapiro-Wilk, explicados a seguir.  \\
+
+\textbf{Curtose:} Indica o grau de achatamento de uma curva em relação à distribuição normal. Uma curtose ~3 indica uma distribuição "Mesocúrtica", que tem achatamento semelhante à distribuição normal. Foi analisada a Curtose de todas as variáveis contínuas de interesse.\\
+
+\textbf{Assimetria:} Indica a assimetria dos dados em relação ao seu valor central. Pode ser interpretado também como o "tamanho da cauda"  da distribuição. Uma distribuição assimétrica à esquerda indica que a distribuição possui uma cauda comprida à esquerda. Distribuições mais assimétricas são mais diferentes de uma distribuição normal. A medidas de assimetria muito distantes de 0 indicam uma assimetria relevante. Foi analisada a Assimetria de todas as variáveis contínuas de interesse.\\
+
+\textbf{\emph{Outliers}}: Em Português chamados valores discrepantes, indicam valores que se encontram fora do range de distribuição esperados daquela amostra. Neste trabalho, consideramos valores 1.5 vezes maior ou menos que os quartis Q1 e Q3, respectivamente, como sendo valores discrepantes. Para a anáise do tempo de duração do filme, os \textemph{outliers} foram removidos.\\
+
+\textbf{Teste de Hipóteses:} Um Teste de Hipóteses é uma forma objetiva de confrontar os valores esperados com aqueles observados e estimar a chance desses valores pertencerem a uma mesma população. Propõe-se uma hipótese nula que de modo geral, é aquela que afirma  que os dados são de uma mesma população (ou seja, que têm parâmetros iguais, como por exemplo, médias iguais, ou proporções iguais, etc). Paralelamente, propõe-se uma hipótese alternativa, que afirma que os grupos em comparação não são de uma mesma população. Após a realização dos cálculos apropriados, avalia-se o p-valor. Quando o p-valor é menor que o valor de significância pré-estabelecido, rejeita-se a hipótese nula.
+
+\textbf{p-valor}: O p-valor indica a probabilidade de se observar dados tão extremos quanto aqueles em uma população que possua a mesma distribuição da sua amostra. 
+
+\textbf{Nível de Significância $\alpha$} : Indica o valor, escolhido \emph{a priori}, como sendo o que você considera aceitável para o Erro do Tipo II, ou seja, a chance de erroneamente rejeitar a Hipótese Nula, dada que ela é verdadeira. 
+
+\subsection{Gráficos Utilizados}
+
+\textbf{Boxplot:} Também chamado de Diagrama de Caixas, o boxplot é uma forma concisa de visualizar muitas informações sobre os dados. A caixa que da o nome ao tipo de gráfico, indica o primeiro e o terceiro quartil em seus extremos inferior e superior respectivamente. A barra horizontal central indica o posicionamento da mediana.  As barras verticais indicam a distribuição dos dados de seu valor mínimo ao máximo, ou seja todo o range de distribuição. Os pontos indicam valores discrepantes, ou \emph{outliers}. Neste trabalho esse gráfico foi utilizado para \textbf{i)} comparar as notas do IMDb entre plataformas, \textbf{ii)} Comparar notas do Rotten Tomatoes entre tipos de Metragem.\\
+
+\textbf{Gráfico de Dispersão:} Um gráfico de dispersão mostra a relação entre duas variáveis contínuas. Cada ponto é representado no plano cartesiano de maneira que suas coordenadas são indicadas pelos valores das duas variáveis em questão, representadas no eixo horizontal e vertical. Neste trabalho esse gráfico foi utilizado para comparar as relações entre as variáveis \textbf{i)} Ano de Lançamento x Número de Lançamentos,\textbf{ii)} Ano de Lançamento x Tempo de Duração do Filme. \\
+
+\textbf{QQ-Plot:} Um gráfico desse tipo tem o objetivo de comparar duas distribuições de frequências (O Q vem de "Quantil", então significa um gráfico Quantil x Quantil). Sua diagonal indica a posição dos pontos no caso das distribuições serem perfeitamente idênticas. O eixo Horizontal indica a distribuição teórica de uma variável com distribuição normal, e o eixo Vertical da variável da amostra sendo estudada. Caso os valores plotados se encontrem próximos à diagonal central, isto é um indicativo que a distribuição da amostra se aproxima de uma distribuição normal. Esse gráfico foi utilizado para avaliar a dispersão de todas as variáveis contínuas de interesse. \\
+
+\textbf{Curva de Densidade:} Uma curva de densidades é um gráfico de linha que indica a distribuição de frequências de uma variável. Ou seja, para cada valor observado da variável (eixo horizontal) indica-se quantas observações foram encontradas (frequência, eixo vertical). Se assemelha a um gráfico do tipo histograma ou um a um polígono de frequências. Esse gráfico foi utilizado para avaliar a dispersão de todas as variáveis contínuas de interesse. \\
+
+\textbf{Gráfico de Colunas ou Barras:} Muito utilizado em diversas áreas, o gráfico de barras indica a quantidade de dados para cada categoria a ser comparada. Esse tipo de gráfico foi utilizado nesta análise para avaliar a distribuição de Classificação Indicativa do filme por Plataforma. \\ 
+
+\textbf{Gráfico de Setores:} Também conhecido como um gráfico de "Pizza", o gráfico de setores é uma forma intuitiva de visualizar proporções em um todo, visualizando como fatias em uma pizza. Esse Gráfico foi utilizado para avaliar a distribuição de filmes de Curta, Média e Longa metragem ao longo das décadas. \\
+
+\subsection{Teses de Hipótese}
+
+\textbf{Teste de Shapiro-Wilk:} Utilizado para verificar se os dados estudados tem distribuição Normal. A normalidade dos dados é uma premissa importante para a realização de testes de hipótese do tipo paramétrico. Um p-valor <0.05 indica um desvio significativo de uma distribuição normal. Este teste foi utilizado para a avaliação da normalidade dos dados das variáveis contínuas de interesse.\\
+
+\textbf{Teste de Bartlett:} Teste que também é utilizado para testar se os dados amostrais seguem as premissas para testes paramétricos. Este teste compara as variâncias entre grupos. Um p-valor <0.05 nesse teste indica que ao menos uma variância dos grupos se diferencia das outras. No caso desse trabalho, todos os testes de hipótese utilizados foram do tipo não-paramétrico.\\
+
+\emph{Obs.}: Como premissa para realização dos testes, os dados devem pertencer à uma população com distribuição normal e os grupos devem apresentar variâncias homogêneas. Paralelamente poderemos observar isso em um gráfico de densidade semelhante ao de uma curva na forma de sino e um gráfico de qq-plot com pontos distribuídos próximos à diagonal central. Todas essas análises foram realizadas.\\
+
+\textbf{ Teste de $\chi^2$ quadrado:} Este teste indica a associação entre duas variáveis qualitativas. Ou seja, indica se as proporções de uma variável varia com a alteração de uma segunda variável. Este teste foi utilizado para verificar \textbf{i)} associação da Metragem do Filme (Curta, Média e Longa) e a Década, \textbf{ii)} Comparação da proporção de filmes para Maiores ou Menores de 18 anos entre as Plataformas. \\
+
+\textbf{Teste de Kruskal-Wallis:} Este é um teste do tipo não-paramétrico utilizado quando a os dados não provêm de uma distribuição normal. É um teste de postos (\emph{ranking}) que compara se dados de três ou mais grupos têm a mesma distribuição. Este teste foi utilizado para comparar \textbf{i)}  a distribuição de notas do IMDb entre as Plataformas e \textbf{ii)} A comparação de notas Rotten Tomatoes entre os tipos de Metragem do filme. \\
+
+\textbf{Teste de Dunn:} Também é um teste de postos que semelhante utilizado usualmente após um teste de kruskal-Wallis para realizar comparações par a par entre os grupos. Foi utilizado \textemph{ a posteriori} de todos os testes de Kruskall-Wallis significativos.\\
+
+\textbf{Correlação de Spearman:} Para avaliar a força e significância da correlação entre duas variáveis que não possuem distribuição normal, pode-se utilizar o teste correlação de Spearman que fornece o coeficiente $\rho$ de Spearman. Valores próximos a 1 ou a -1 indicam correlações fortemente positivas ou fortemente negativas, respectivamente. Ou seja, se há uma relação proporcional ou inversamente proporcional, caso haja uma correlação significativa (p-valor<0.05). Esse teste e coeficiente foram utilizados para avaliar a correlação entre a variável Tempo de Duração do Filme e sua Nota no IMDb. \\
+
+\textbf{GLM:} Um modelo linear generalizado (GLM, do inglês General Linear Model) visa medir o quanto uma variável reposta observável pode ser explicada pela variação em outra variável, que é considerada uma variável explicativa. O modelo generalizado tem a vantagem sobre uma regressão linear usual por não necessitar de atender a premissa de normalidade dos dados. Nesse trabalho, foi utilizado um GLM para avaliar o tempo de duração de um filme em relação ao seu ano de lançamento. Como o tempo de duração não apresentava uma distribuição que indicasse proveniência de uma população normal, foi escolhido um modelo que tomava como base uma distribuição Gama, mais indicada no caso de distribuições assimétricas.\\
+
+\textbf{Nuvem de Palavras:} Também se escolheu fazer uso dessa  forma intuitiva e frequentemente utilizada utilizada atualmente. A nuvem de palavras mostra a frequência da palavra em determinado texto, indicando com fontes de tamanho maior aquelas palavras mais frequentes. Nesse trabalho foi utilizada para indicar quais diretores se encontravam mais frequentemente entre os Top 5 (pela no ta do IMDb) em diferentes gêneros de filme.  \\
+
+\section{Análises}
+
+\subsection {A quantidade de lançamentos ao longo dos anos}\\
+
 
 \begin{quadro}[H]
 \centering
@@ -158,7 +229,7 @@ E aí, agora colocamos junto em um quadro a variável testada, os pressupostos t
 
 Como caption, geralmente é colocado: "P-valores das hipóteses testadas sobre tantantantan"
 
-\section{Mudanças na forma de concluir}
+\section{Conclusões}
 
 Antes a forma de concluir o relatório, era em tópicos, agora fazemos a conclusão em parágrafos mesmo. A ideia da conclusão é que ela apresente de forma sucinta e objetiva o objetivo do cliente com a consultoria - imaginamos que o cliente queira saber qual o impacto de um tratamento nas lesões dos pacientes, e a ideia seria fazer uma conclusão que apresenta exatamente seus objetivos: parágrafos explicando em quais tratamentos a intervenção foi eficaz ou se piorou a dor hhahahahahaha.
 
