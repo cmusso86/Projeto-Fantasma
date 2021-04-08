@@ -107,7 +107,7 @@
 Carolina Musso \\
 } \\ \\
 \parbox[t]{5cm}{\textbf{Requerente:}\\ 
-Floriano, Diretor da VocêTudo\\
+Floriano, Diretor de Expansão VocêTubo\\
 }
 \end{minipage}
 \end{flushright}
@@ -157,13 +157,13 @@ Foram utilizadas as seguintes medidas de posição e dispersão para descrever a
 
 \textbf{Min Max:} Os valores Mínimo e Máximo são auto-explicativos e representam o range total que os dados da amostra percorrem.\\
 
-\textbf{Normalidade dos dados:} É uma premissa para diversos testes de hipótese que os dados sejam provenientes de uma população com distribuição normal. Uma distribuição normal, também denominada Paramétrica, é uma distribuição de frequências caracterizada por uma curva em forma de sino, simétrica em relação ao seu valor médio, e dentre outros aspectos importantes, apresenta baixa frequência de valores extremos. Para a verificação dessa premissa, foram utilizados gráfico de densidade, gráfico qq-plot e o teste de Shapiro-Wilk, explicados a seguir.  \\
+\textbf{Normalidade dos dados:} É uma premissa para diversos testes de hipótese que os dados sejam provenientes de uma população com distribuição normal. Uma distribuição normal, também denominada Paramétrica, é uma distribuição de frequências caracterizada por uma curva em forma de sino, simétrica em relação ao seu valor médio, e dentre outros aspectos importantes, apresenta baixa frequência de valores extremos. Para a verificação dessa premissa, foram utilizados gráfico de densidade, gráfico QQ-plot e o teste de Shapiro-Wilk, explicados a seguir.  \\
 
 \textbf{Curtose:} Indica o grau de achatamento de uma curva em relação à distribuição normal. Uma curtose ~3 indica uma distribuição "Mesocúrtica", que tem achatamento semelhante à distribuição normal. Foi analisada a Curtose de todas as variáveis contínuas de interesse.\\
 
 \textbf{Assimetria:} Indica a assimetria dos dados em relação ao seu valor central. Pode ser interpretado também como o "tamanho da cauda"  da distribuição. Uma distribuição assimétrica à esquerda indica que a distribuição possui uma cauda comprida à esquerda. Distribuições mais assimétricas são mais diferentes de uma distribuição normal. A medidas de assimetria muito distantes de 0 indicam uma assimetria relevante. Foi analisada a Assimetria de todas as variáveis contínuas de interesse.\\
 
-\textbf{\emph{Outliers}}: Em Português chamados valores discrepantes, indicam valores que se encontram fora do range de distribuição esperados daquela amostra. Neste trabalho, consideramos valores 1.5 vezes maior ou menos que os quartis Q1 e Q3, respectivamente, como sendo valores discrepantes. Para a anáise do tempo de duração do filme, os \textemph{outliers} foram removidos.\\
+\textbf{\emph{Outliers}}: Em Português chamados valores discrepantes, indicam valores que se encontram fora do range de distribuição esperados daquela amostra. Neste trabalho, consideramos valores 1.5 vezes maior ou menos que os quartis Q1 e Q3, respectivamente, como sendo valores discrepantes. Para a análise do tempo de duração do filme, os \textemph{outliers} foram removidos.\\
 
 \textbf{Teste de Hipóteses:} Um Teste de Hipóteses é uma forma objetiva de confrontar os valores esperados com aqueles observados e estimar a chance desses valores pertencerem a uma mesma população. Propõe-se uma hipótese nula que de modo geral, é aquela que afirma  que os dados são de uma mesma população (ou seja, que têm parâmetros iguais, como por exemplo, médias iguais, ou proporções iguais, etc). Paralelamente, propõe-se uma hipótese alternativa, que afirma que os grupos em comparação não são de uma mesma população. Após a realização dos cálculos apropriados, avalia-se o p-valor. Quando o p-valor é menor que o valor de significância pré-estabelecido, rejeita-se a hipótese nula.
 
@@ -191,13 +191,13 @@ Foram utilizadas as seguintes medidas de posição e dispersão para descrever a
 
 \textbf{Teste de Bartlett:} Teste que também é utilizado para testar se os dados amostrais seguem as premissas para testes paramétricos. Este teste compara as variâncias entre grupos. Um p-valor <0.05 nesse teste indica que ao menos uma variância dos grupos se diferencia das outras. No caso desse trabalho, todos os testes de hipótese utilizados foram do tipo não-paramétrico.\\
 
-\emph{Obs.}: Como premissa para realização dos testes, os dados devem pertencer à uma população com distribuição normal e os grupos devem apresentar variâncias homogêneas. Paralelamente poderemos observar isso em um gráfico de densidade semelhante ao de uma curva na forma de sino e um gráfico de qq-plot com pontos distribuídos próximos à diagonal central. Todas essas análises foram realizadas.\\
+\emph{Obs.}: Como premissa para realização dos testes, os dados devem pertencer à uma população com distribuição normal e os grupos devem apresentar variâncias homogêneas. Paralelamente poderemos observar isso em um gráfico de densidade semelhante ao de uma curva na forma de sino e um gráfico de QQ-plot com pontos distribuídos próximos à diagonal central. Todas essas análises foram realizadas.\\
 
 \textbf{ Teste de $\chi^2$ quadrado:} Este teste indica a associação entre duas variáveis qualitativas. Ou seja, indica se as proporções de uma variável varia com a alteração de uma segunda variável. Este teste foi utilizado para verificar \textbf{i)} associação da Metragem do Filme (Curta, Média e Longa) e a Década, \textbf{ii)} Comparação da proporção de filmes para Maiores ou Menores de 18 anos entre as Plataformas. \\
 
 \textbf{Teste de Kruskal-Wallis:} Este é um teste do tipo não-paramétrico utilizado quando a os dados não provêm de uma distribuição normal. É um teste de postos (\emph{ranking}) que compara se dados de três ou mais grupos têm a mesma distribuição. Este teste foi utilizado para comparar \textbf{i)}  a distribuição de notas do IMDb entre as Plataformas e \textbf{ii)} A comparação de notas Rotten Tomatoes entre os tipos de Metragem do filme. \\
 
-\textbf{Teste de Dunn:} Também é um teste de postos que semelhante utilizado usualmente após um teste de kruskal-Wallis para realizar comparações par a par entre os grupos. Foi utilizado \textemph{ a posteriori} de todos os testes de Kruskall-Wallis significativos.\\
+\textbf{Teste de Dunn:} Também é um teste de postos que semelhante utilizado usualmente após um teste de Kruskal-Wallis para realizar comparações par a par entre os grupos. Foi utilizado \textemph{ a posteriori} de todos os testes de Kruskall-Wallis significativos.\\
 
 \textbf{Correlação de Spearman:} Para avaliar a força e significância da correlação entre duas variáveis que não possuem distribuição normal, pode-se utilizar o teste correlação de Spearman que fornece o coeficiente $\rho$ de Spearman. Valores próximos a 1 ou a -1 indicam correlações fortemente positivas ou fortemente negativas, respectivamente. Ou seja, se há uma relação proporcional ou inversamente proporcional, caso haja uma correlação significativa (p-valor<0.05). Esse teste e coeficiente foram utilizados para avaliar a correlação entre a variável Tempo de Duração do Filme e sua Nota no IMDb. \\
 
@@ -297,7 +297,7 @@ Anos 2010 & 8039  & 93.12 & 16.96 & 49 & 84.0 & 92 & 103.0 & 137\\
 \end{tabular}
 \end{table}
 
-Antes da realização da regressão linear, a normalidade dos dados (sem \emph{outliers}) foi verificada visualmente por meio dos gráficos de densidade, QQplot, a curtose e assimetria abaixo. Os. parâmetros foram considerados razoavelmente satisfatórios para a realização de uma regressão linear. 
+Antes da realização da regressão linear, a normalidade dos dados (sem \emph{outliers}) foi verificada visualmente por meio dos gráficos de densidade, QQplot, a curtose e assimetria, apresentados abaixo. Os parâmetros foram considerados razoavelmente satisfatórios para a realização de uma regressão linear. 
 
 Os gráficos abaixo mostram uma distribuição razoavelmente simétrica (Assimetria de 0.007, indicando uma leve assimetria à direita) e uma distribuição leptocúrtica (Curtose = 3.2, mais fina e comprida em relação à normal). Vemos que a maioria dos filmes tem duração ~90 min, mas que há pequenos picos de filmes com ~60 min e ~120 min.
 
@@ -348,7 +348,6 @@ Para explorar mais afundo essa relação do tempo de duração do filme e o ano 
     \includegraphics[scale=0.25]{Fig_Setores_Decada_Duracao.png}
     \label{fig:my_label}
 \end{figure}
-\section{Conclusões}
 
 Nas primeiras décadas do século XX (Descontando o primeiro gráfico que indica a produção de um único Curta-Metragem na primeira década), cerca de 25\% das produções se tratavam de Curta-Metragens e 70\% de Longas. Ao início do Século XXI essas proporções eram, respectivamente de 2\% 3 90\%. Essa diferença foi significativa, como está indicado no resultado do teste de $\chi^2$ abaixo:
 
@@ -396,7 +395,7 @@ A nota do Rotten Tomatoes não apresenta distribuição normal, como pode ser ob
     \label{fig:my_label}
 \end{figure}
 
-Como pode ser observado, a dispersão é notavelmente assimétrica à esquerda (Assimetria -0.5) e Platicúrtica (achatada). Ademais, o QQ-plot mostra um desvio significato da normal principalmente para os valores em seus extremos. 
+Como pode ser observado, a dispersão é notavelmente assimétrica à esquerda (Assimetria -0.5) e Platicúrtica (achatada). Ademais, o QQ-plot mostra um desvio significativo da normal principalmente para os valores em seus extremos. 
 
 Por isso, foi escolhido a o teste Spearman para analisar a correlação entre essas variáveis.
  
@@ -417,14 +416,14 @@ Por isso, foi escolhido a o teste Spearman para analisar a correlação entre es
 
 Como pôde se observado, não uma correlação significativa entre essas variáveis. 
 
-\subsubsection{ Duração como variável Categórica}
+\subsubsection{ Tempo como variável Categórica}
 
-Por outro lado, observando realizando a comparação entre as notas paras os grupos de Curte, Média e Longa-metragens, tonamos que os Média-metragens apresentam média de nota no Rotten Tomatoes significativamente maiores.
+Por outro lado, observando realizando a comparação entre as notas paras os grupos de Curta, Média e Longa-metragens, notamos que os Média-metragens apresentam média de nota no Rotten Tomatoes significativamente maiores.
 
 \begin{figure}[H]
     \centering
-    \caption{Box plot nota do Rotten Tomatoes por Metragem do filme}
-    \includegraphics[scale=0.15]{Fig_Rottem_Metragem.png}
+    \caption{Boxplot nota do Rotten Tomatoes por Metragem do filme}
+    \includegraphics[scale=0.25]{Fig_Rottem_Metragem.png}
     \label{fig:my_label}
 \end{figure}
 
@@ -508,11 +507,11 @@ Todas &  277 & 55.4 &  55 & 9.3 &  130 & 7.8 &  406 & 8.2  \\
 \end{tabular}
 \end{table}
 
-Para a realização de um teste de $\chi^2$ mais fácil de interpretar, a variável Classificação Indicativa foi transformada em uma variável Dicotômica (Menores ou maiores de 18 anos). Observavamos uma associação significativa entre a Plataforma e a Classificação, que se diferencia principalmente por uma maior proporção de filmes de Classificação indicativa livre na plataforma Disney+ e em contra partida uma proporção maior de files para maiores de 18 anos na plataforma Prime Video.
+Para a realização de um teste de $\chi^2$ mais fácil de interpretar, a variável Classificação Indicativa foi transformada em uma variável Dicotômica (Menores ou maiores de 18 anos). Observamos uma associação significativa entre a Plataforma e a Classificação, que se diferencia principalmente por uma maior proporção de filmes de Classificação indicativa livre na plataforma Disney+ e em contra partida uma proporção maior de files para maiores de 18 anos na plataforma Prime Video.
 
 \begin{quadro}[H]
 \centering
-\caption{Teste $\chi^2$ entre classificação e plafatorma }
+\caption{Teste $\chi^2$ entre classificação e plataforma }
 \label{R-Q-Teste-1}
 \vspace{0.1cm}
 \resizebox{\textwidth}{!}{
@@ -531,7 +530,7 @@ Uma comparação das notas do IMDb entre as plataformas pode ser observada no gr
 
 \begin{figure}[H]
     \centering
-    \caption{Distribuição da Classificação Indicativa por Plataforma}
+    \caption{Nota do IMDb por Plataforma}
     \includegraphics[scale=0.25]{Fig_IMDb_Plataforma.png}
     \label{fig:my_label}
 \end{figure}
@@ -560,12 +559,12 @@ Prime Video &  4950 & 29 & 5.63 & 1.39 & 1.0 & 4.7 & 5.8 & 6.7 & 9.1  \\
 \end{tabular}
 \end{table}
 
-Uma vez que o teste de Shapiro-Wilk indicou uma ditribuição diferente da normal e o teste de Bartlett indicaram não-homogeneidade das variâncias, foi escolhido um teste de postos de Kruskal-Wallis para comparar os grupos. O teste mostra uma diferença a nota entre as plataformas, sendo que a plataforma Prime Video foi a que apresentou, de nomo geral, as menores notas. Entretanto, é importsnte ter em mente que essa também foi a plataforms com maior número de filmes em streaming, o que amplia as chances de apresentar filmes piores em seu catálogo. O resultado do teste pode ser observado na tabela abaixo:
+Uma vez que o teste de Shapiro-Wilk indicou uma distribuição diferente da normal e o teste de Bartlett indicaram não-homogeneidade das variâncias, foi escolhido um teste de postos de Kruskal-Wallis para comparar os grupos. O teste mostra uma diferença a nota entre as plataformas, sendo que a plataforma Prime Video foi a que apresentou, de nomo geral, as menores notas. Entretanto, é importante ter em mente que essa também foi a plataforma com maior número de filmes em \emph{streaming}, o que amplia as chances de apresentar filmes piores em seu catálogo. O resultado do teste pode ser observado na tabela abaixo:
 
 
 \begin{quadro}[H]
 \centering
-\caption{Teste Krukal-Wallis da nota IMDb entre plafatorma }
+\caption{Teste Krukal-Wallis da nota IMDb entre plataforma }
 \label{R-Q-Teste-1}
 \vspace{0.1cm}
 \resizebox{\textwidth}{!}{
@@ -580,7 +579,7 @@ Uma vez que o teste de Shapiro-Wilk indicou uma ditribuição diferente da norma
 
 O teste de Dunn indica que todos grupos são diferentes entre si, exceto Hulu x Netflix.
 
-\subsection {Top 5 diretoes de acordo com a nota IMDb}
+\subsection {Top 5 diretores de acordo com a nota IMDb}
 
 Esta questão pode ser avaliada de diversas formas:
 
@@ -593,10 +592,10 @@ A Classificação para um filme individual se deu como se segue:\\
 \item Danny Wu , com nota 9.3  pelo filme \emph{Square One}  
 \itemTom McLoughlin, com nota  9.3 pelo filme \emph{Steven Banks: Home Entertainment Center}
 \item Miguel Gaudêncio, com nota  9.3 pelo filme \emph{Down, But Not Out!}            
-\item Roger Donaldson,com nota  9.3 pelo filme \emph{Bounty}      
+\item Roger Donaldson, com nota  9.3 pelo filme \emph{Bounty}      
 \end{enumerate}
 
-\subsubsection{Qual as cinco melhores notas médias dos diretore?}
+\subsubsection{Qual as cinco melhores notas médias dos diretores?}
 
 Para essa análise foram considerados apenas os diretores com pelo menos três filmes:
 
@@ -612,7 +611,7 @@ Para essa análise foram considerados apenas os diretores com pelo menos três f
 
 \subsubsection{Qual as cinco melhores notas médias dos filmes com apenas um diretor?}
 
-na base de dados há filmes com até mais de 20 diretores. Avaliar aqueles filmes que tiveram apenas um diretor pode ser mais informativo a respeito mo mérito indivídual. Nesse caso a lista dos Top 5 é composta por:\\
+Na base de dados estudada, há filmes com até mais de 20 diretores. Avaliar aqueles filmes que tiveram apenas um diretor pode ser mais informativo a respeito mo mérito individual. Nesse caso a lista dos Top 5 é composta por:\\
 
 \begin{enumerate}[topsep=0pt,partopsep=0pt]
     \item Rocco Urbisci
@@ -686,11 +685,11 @@ Levando em consideração todos os gêneros presentes no banco, os diretores que
 \textbf{Ficção Científica e Fantasia}
 \begin{enumerate}[topsep=0pt,partopsep=0pt]
     \item Os lançamentos de filmes aumentaram com o passar dos anos, principalmente após os anos 2000.
-    \item A duraÇão do filme está fracamente, mas significativamente, relacionado de forma positiva com os anos. Ou seja, filmes mais recentes tendem a ser de maior duração. Também teve um aumento na proporção de Longa-metragens.  
-    \item Não ouve associação direta entre o tempo de duração do filne e a nota no Rotten Tomatoes, mas os Média-Metragens apresentaram notas significativamente maiores. 
+    \item A duração do filme está fracamente, mas significativamente, relacionada de forma positiva com os anos. Ou seja, filmes mais recentes tendem a ser de maior duração. Também teve um aumento na proporção de Longa-metragens em anos mais recentes. 
+    \item Não houve associação direta entre o tempo de duração do filme e a nota no Rotten Tomatoes, mas os Média-Metragens apresentaram notas significativamente maiores. 
     \item A plataforma Disney+ foi a que apresentou maior proporção de filmes de classificação livre, enquanto a Prime Video apresentou maior proporção de filmes para maiores de 18 anos. 
-    \item A plataforma Prime Video foi a que apresnetou menor porntuação média de seus filmes no IMDb, enquanto a Disney+ apresentou a maior. 
-    \item Entre os diretores mais frequentemente presentes nos Top5, e mais conhecidos no ocidente estão Quentin Tarantino, Christopher Nolan, Martin Scorsese.
+    \item A plataforma Prime Video foi a que apresentou menor pontuação média de seus filmes no IMDb, enquanto a Disney+ apresentou a maior. 
+    \item Entre os diretores mais frequentemente presentes nos Top5, e mais conhecidos no ocidente, estão Quentin Tarantino, Christopher Nolan e Martin Scorsese.
 \end{enumerate}
 
 
